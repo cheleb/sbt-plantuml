@@ -8,9 +8,8 @@
 
 In project/plugins.sbt
 ```
-resolvers += Resolver.bintrayIvyRepo("metabookmarks", "sbt-plugin-releases")
 
-addSbtPlugin("io.metabookmarks" % "sbt-plantuml-plugin" % "0.0.66")
+addSbtPlugin("dev.cheleb" % "sbt-plantuml" % <version>)
 
 ```
 
