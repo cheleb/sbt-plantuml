@@ -1,0 +1,10 @@
+.idea/
+.ensime
+.ensime_cache/
+
+target/
+*~
+.bloop/
+.metals/
+.vscode/
+.bsp/
