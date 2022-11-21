@@ -1,6 +1,5 @@
 name: CI
 on:
-  push:
   pull_request:
 jobs:
   build:
@@ -8,4 +7,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3.0.2
     - uses: olafurpg/setup-scala@v13
-    - run: sbt compile
+    - name: Setup Graphviz
+      uses: ts-graphviz/setup-graphviz@v1
+    - run: sbt test
