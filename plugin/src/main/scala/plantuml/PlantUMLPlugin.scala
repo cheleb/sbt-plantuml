@@ -19,23 +19,17 @@ object PlantUMLPlugin extends AutoPlugin {
 
   import autoImport._
 
-  override lazy val projectSettings = Seq(
+  override lazy val buildSettings: Seq[Setting[_]] = Seq(
     plantUMLSource := baseDirectory.value / "src/main/plantuml",
-    plantUMLTarget := resourceManaged.in(Compile).value / "diagram",
-    resourceGenerators.in(Compile)  += Def
+    plantUMLTarget := resourceManaged.in(Compile).value / "diagram"
+  )
+
+  override lazy val projectSettings = Seq(
+    resourceGenerators.in(Compile) += Def
       .task[Seq[File]] {
-        val inputs = IO.listFiles(plantUMLSource.value).toList
-
-        val output = plantUMLTarget.value
-
-        IO.createDirectory(output)
-
-        inputs
-          .flatMap { input =>
-            val plant = new SourceFileReader(input, output)
-            plant.getGeneratedImages.asScala
-          }
-          .map(_.getPngFile)
+        val source = plantUMLSource.value.toPath()
+        val outputBaseDir = plantUMLTarget.value.toPath()
+        PlantUmlWalker.genAllPngs(source, outputBaseDir).toList
       }
       .taskValue
   )

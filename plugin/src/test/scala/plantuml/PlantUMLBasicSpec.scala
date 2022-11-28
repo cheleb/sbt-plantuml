@@ -9,22 +9,24 @@ import net.sourceforge.plantuml.SourceFileReader
 import scala.collection.JavaConverters._
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.Assertion
+import java.nio.file.Paths
 
 class PlantUMLBasicSpec extends AnyWordSpec with Matchers {
 
-  def listFiles(folder: String) = new File(s"src/test/resources/$folder").listFiles()
-  def withTemporaryDirectory(f: File => Assertion) =
-    f(Files.createTempDirectory("plantuml-test").toFile())
+  def listFiles(folder: String) =
+    PlantUmlWalker.walk(Paths.get("src", "test", "resources", folder), Files.createTempDirectory("plantuml-test"))
 
   "PlantUML" must {
-    listFiles("diagram").foreach { file =>
-      s"Handle diagram: ${file.getName()}" in {
-        withTemporaryDirectory { output =>
-          val plantuml = new SourceFileReader(file, output)
-          assert(plantuml.getGeneratedImages.asScala
-            .map(_.getStatus())
-            .forall(_ == 0) == true)
-        }
+    listFiles("diagram").foreach { case (in, out) =>
+      s"Handle diagram: ${in.toString()}" in {
+        assert(
+          PlantUmlWalker
+            .genPng(in, out)
+            .map { gen =>
+              gen.getStatus()
+            }
+            .forall(_ == 0) == true
+        )
       }
     }
   }
