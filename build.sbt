@@ -3,7 +3,7 @@
 
 val scala213 = "2.13.10"
 val scala212 = "2.12.17"
-val scala32 = "3.2.1"
+val scala32 = "3.2.2"
 val mainScala = scala212
 val allScala = Seq(scala32, scala213, scala212)
 
@@ -55,7 +55,7 @@ lazy val plugin = project
   .enablePlugins(SbtPlugin)
   .settings(
     moduleName := "sbt-plantuml",
-    libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2022.14",
+    libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2023.4",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.15" % Test,
     pluginCrossBuild / sbtVersion := "1.0.4",
     addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.1.1"),
