@@ -13,5 +13,5 @@ jobs:
         distribution: 'zulu'
         cache: sbt
     - name: Setup Graphviz
-      uses: ts-graphviz/setup-graphviz@v1
+      uses: ts-graphviz/setup-graphviz@v2
     - run: sbt test
