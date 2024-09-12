@@ -11,7 +11,7 @@ import java.nio.file.Files
 object PlantUMLPlugin extends AutoPlugin {
   override def requires: Plugins = plugins.JvmPlugin
 
-  override def trigger: PluginTrigger = allRequirements
+  override def trigger: PluginTrigger = noTrigger
 
   object autoImport {
     val plantUMLSource = settingKey[File]("plantUML sources")
