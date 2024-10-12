@@ -12,6 +12,8 @@ jobs:
         java-version: '17'
         distribution: 'zulu'
         cache: sbt
+    - name: Install sbt
+      uses: sbt/setup-sbt@v1
     - name: Setup Graphviz
       uses: ts-graphviz/setup-graphviz@v2
     - run: sbt test
