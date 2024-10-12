@@ -5,7 +5,6 @@ val scala213 = "2.13.10"
 val scala212 = "2.12.21"
 val scala32 = "3.2.2"
 val mainScala = scala212
-val allScala = Seq(scala32, scala213, scala212)
 
 inThisBuild(
   List(
@@ -14,6 +13,7 @@ inThisBuild(
     licenses := List(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
     ),
+    crossScalaVersions := Seq(scala212, scala3),
     useCoursier := false,
     scalaVersion := mainScala,
 //    crossScalaVersions := allScala,
