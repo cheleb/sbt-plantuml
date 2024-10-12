@@ -59,7 +59,7 @@ lazy val plugin = project
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
     pluginCrossBuild / sbtVersion := "1.0.4",
     addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.1.1"),
-    addSbtPlugin("com.github.sbt" % "sbt-git" % "2.0.1"),
+    addSbtPlugin("com.github.sbt" % "sbt-git" % "2.1.0"),
     addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.12.2"),
     addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.3.0")
   )
