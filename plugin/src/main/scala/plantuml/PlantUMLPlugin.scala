@@ -26,7 +26,7 @@ object PlantUMLPlugin extends AutoPlugin {
   )
 
   override lazy val projectSettings = Seq(
-    resourceGenerators.in(Compile) += Def
+    Compile / resourceGenerators += Def
       .task[Seq[File]] {
         val logger = streams.value.log
         logger.info(
