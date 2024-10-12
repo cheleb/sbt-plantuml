@@ -1,11 +1,10 @@
 //Customized release
 //import sbtrelease.ReleaseStateTransformations._
 
-val scala213 = "2.13.10"
-val scala212 = "2.12.17"
-val scala32 = "3.2.2"
+lazy val scala212 = "2.12.15"
+lazy val scala3 = "3.3.4"
+
 val mainScala = scala212
-val allScala = Seq(scala32, scala213, scala212)
 
 inThisBuild(
   List(
@@ -14,6 +13,7 @@ inThisBuild(
     licenses := List(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
     ),
+    crossScalaVersions := Seq(scala212, scala3),
     useCoursier := false,
     scalaVersion := mainScala,
 //    crossScalaVersions := allScala,
@@ -63,5 +63,9 @@ lazy val plugin = project
     moduleName := "sbt-plantuml",
     libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2025.4",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
-    pluginCrossBuild / sbtVersion := "1.11.1"
+    pluginCrossBuild / sbtVersion := "1.0.4",
+    addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.1.1"),
+    addSbtPlugin("com.github.sbt" % "sbt-git" % "2.0.1"),
+    addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.11.3"),
+    addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.2.1")
   )
