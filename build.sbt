@@ -57,8 +57,8 @@ lazy val plugin = project
     moduleName := "sbt-plantuml",
     libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2025.0",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
-    pluginCrossBuild / sbtVersion := "1.0.4",
-    addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.1.1"),
+    pluginCrossBuild / sbtVersion := "1.10.7",
+    addSbtPlugin("com.github.sbt" % "sbt-dynver" % "5.1.0"),
     addSbtPlugin("com.github.sbt" % "sbt-git" % "2.1.0"),
     addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.12.2"),
     addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.3.1")
