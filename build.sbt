@@ -55,7 +55,7 @@ lazy val plugin = project
   .enablePlugins(SbtPlugin)
   .settings(
     moduleName := "sbt-plantuml",
-    libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2025.2",
+    libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2025.3",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
     pluginCrossBuild / sbtVersion := "1.10.7",
     addSbtPlugin("com.github.sbt" % "sbt-dynver" % "5.1.0"),
