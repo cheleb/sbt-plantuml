@@ -17,11 +17,17 @@ inThisBuild(
     useCoursier := false,
     scalaVersion := mainScala,
 //    crossScalaVersions := allScala,
+    sbtPluginPublishLegacyMavenStyle := false,
     Test / parallelExecution := false,
     Test / fork := true,
     run / fork := true,
-    sonatypeCredentialHost := "s01.oss.sonatype.org",
-    sonatypeRepository := "https://s01.oss.sonatype.org/service/local",
+    publishTo := {
+      val centralSnapshots =
+        "https://central.sonatype.com/repository/maven-snapshots/"
+      if (isSnapshot.value) Some("central-snapshots" at centralSnapshots)
+      else localStaging.value
+    },
+    versionScheme := Some("early-semver"),
     pgpPublicRing := file("/tmp/public.asc"),
     pgpSecretRing := file("/tmp/secret.asc"),
     pgpPassphrase := sys.env.get("PGP_PASSWORD").map(_.toArray),
@@ -57,9 +63,5 @@ lazy val plugin = project
     moduleName := "sbt-plantuml",
     libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2025.3",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
-    pluginCrossBuild / sbtVersion := "1.10.7",
-    addSbtPlugin("com.github.sbt" % "sbt-dynver" % "5.1.0"),
-    addSbtPlugin("com.github.sbt" % "sbt-git" % "2.1.0"),
-    addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.12.2"),
-    addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.3.1")
+    pluginCrossBuild / sbtVersion := "1.11.1"
   )
