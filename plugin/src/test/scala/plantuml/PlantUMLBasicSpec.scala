@@ -10,18 +10,22 @@ import scala.collection.JavaConverters._
 import org.scalatest.matchers.must.Matchers
 import org.scalatest.Assertion
 import java.nio.file.Paths
+import net.sourceforge.plantuml.FileFormat
 
 class PlantUMLBasicSpec extends AnyWordSpec with Matchers {
 
   def listFiles(folder: String) =
-    PlantUmlWalker.walk(Paths.get("src", "test", "resources", folder), Files.createTempDirectory("plantuml-test"))
+    PlantUmlWalker.walk(
+      Paths.get("src", "test", "resources", folder),
+      Files.createTempDirectory("plantuml-test")
+    )
 
   "PlantUML" must {
     listFiles("diagram").foreach { case (in, out) =>
       s"Handle diagram: ${in.toString()}" in {
         assert(
           PlantUmlWalker
-            .genPng(in, out)
+            .genImages(in, out, FileFormat.SVG, FileFormat.PNG)
             .map { gen =>
               gen.getStatus()
             }
