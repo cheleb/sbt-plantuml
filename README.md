@@ -25,11 +25,11 @@ enablePlugins(PlantUMLPlugin)
 
 ### Settings
 
-```plantUMLSource```
+* ```plantUMLSource``` setting to specify the source folder of plantUML files.
 
-```plantUMLTarget```
+* ```plantUMLTarget``` setting to specify the target folder of generated images.
 
-
+* ```plantUMLFormats``` setting to specify the output formats of generated images.
 
 
 

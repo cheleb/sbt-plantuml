@@ -10,14 +10,28 @@ import java.nio.file.Files
 import net.sourceforge.plantuml.FileFormat
 
 object PlantUMLPlugin extends AutoPlugin {
+
+  object Formats {
+    val PNG = FileFormat.PNG
+    val SVG = FileFormat.SVG
+    val EPS = FileFormat.EPS
+    val PDF = FileFormat.PDF
+    val VDX = FileFormat.VDX
+    val XMI_STANDARD = FileFormat.XMI_STANDARD
+    val XMI_ARGO = FileFormat.XMI_ARGO
+    val SCXML = FileFormat.SCXML
+    val HTML5 = FileFormat.HTML5
+  }
   override def requires: Plugins = plugins.JvmPlugin
 
   override def trigger: PluginTrigger = noTrigger
 
   object autoImport {
     val plantUMLSource = settingKey[File]("plantUML sources")
-    val plantUMLTarget = settingKey[String]("plantUML target")
+    val plantUMLTarget =
+      settingKey[String]("plantUML target").withRank(KeyRanks.Invisible)
     val plantUMLFormats = settingKey[Seq[FileFormat]]("plantUML formats")
+      .withRank(KeyRanks.Invisible)
   }
 
   import autoImport._
