@@ -43,7 +43,7 @@ object PlantUMLPlugin extends AutoPlugin {
   )
 
   override lazy val projectSettings = Seq(
-    resourceGenerators.in(Compile) += Def
+    (Compile / resourceGenerators) += Def
       .task[Seq[File]] {
         val logger = streams.value.log
         logger.info(
@@ -51,7 +51,7 @@ object PlantUMLPlugin extends AutoPlugin {
         )
         val source = plantUMLSource.value.toPath()
         if (Files.exists(source)) {
-          val outputBaseDir = target.value / plantUMLTarget.in(Compile).value
+          val outputBaseDir = target.value / (Compile / plantUMLTarget).value
           logger.info(s"Generating PlantUML diagrams to ${outputBaseDir}")
           PlantUmlWalker.genAllImages(source, outputBaseDir.toPath()).toList
         } else {
