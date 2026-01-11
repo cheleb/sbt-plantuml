@@ -1,11 +1,8 @@
 //Customized release
 //import sbtrelease.ReleaseStateTransformations._
 
-val scala213 = "2.13.10"
 val scala212 = "2.12.21"
-val scala32 = "3.2.2"
-val mainScala = scala212
-val allScala = Seq(scala32, scala213, scala212)
+val scala3 = "3.7.4"
 
 inThisBuild(
   List(
@@ -15,8 +12,8 @@ inThisBuild(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
     ),
     useCoursier := false,
-    scalaVersion := mainScala,
-//    crossScalaVersions := allScala,
+    crossScalaVersions := Seq(scala212, scala3),
+    scalaVersion := scala212,
     sbtPluginPublishLegacyMavenStyle := false,
     Test / parallelExecution := false,
     Test / fork := true,
@@ -50,8 +47,6 @@ inThisBuild(
 
 name := "sbt-plantuml"
 
-scalaVersion := mainScala
-
 onLoadMessage := s"Welcome to sbt-plantuml ${version.value}"
 
 publish / skip := true // don't publish the root project
@@ -63,5 +58,16 @@ lazy val plugin = project
     moduleName := "sbt-plantuml",
     libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2026.0",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
-    pluginCrossBuild / sbtVersion := "1.12.0"
+    (pluginCrossBuild / sbtVersion) := {
+      scalaBinaryVersion.value match {
+        case "2.12" => "1.12.0"
+        case _      => "2.0.0-RC8"
+      }
+    },
+    scriptedSbt := {
+      scalaBinaryVersion.value match {
+        case "2.12" => "1.12.0"
+        case _      => (pluginCrossBuild / sbtVersion).value
+      }
+    }
   )
