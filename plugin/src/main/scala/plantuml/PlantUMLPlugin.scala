@@ -1,11 +1,11 @@
 package plantuml
 
-import sbt._
-import sbt.Keys._
+import sbt.*
+import sbt.Keys.*
 
 import net.sourceforge.plantuml.SourceFileReader
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import java.nio.file.Files
 import net.sourceforge.plantuml.FileFormat
 
@@ -36,7 +36,7 @@ object PlantUMLPlugin extends AutoPlugin {
 
   import autoImport._
 
-  override lazy val buildSettings: Seq[Setting[_]] = Seq(
+  override lazy val buildSettings: Seq[Setting[?]] = Seq(
     plantUMLSource := baseDirectory.value / "src/main/plantuml",
     plantUMLTarget := "mdoc",
     plantUMLFormats := Seq(FileFormat.PNG)
