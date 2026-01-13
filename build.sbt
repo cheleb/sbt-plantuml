@@ -1,7 +1,7 @@
 //Customized release
 //import sbtrelease.ReleaseStateTransformations._
 
-val scala212 = "2.12.21"
+val scala212 = "3.8.0"
 val scala3 = "3.7.4"
 
 inThisBuild(
