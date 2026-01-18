@@ -1,5 +1,8 @@
 # sbt-plantuml-plugin
 
+Plugin to generate [PlantUML](https://plantuml.com/) diagrams during sbt build.
+
+
 ## Prerequisite
 
 [Graphviz](https://www.graphviz.org/) must be in the $PATH.
@@ -26,9 +29,7 @@ enablePlugins(PlantUMLPlugin)
 ### Settings
 
 * ```plantUMLSource``` setting to specify the source folder of plantUML files.
-
 * ```plantUMLTarget``` setting to specify the target folder of generated images.
-
 * ```plantUMLFormats``` setting to specify the output formats of generated images.
 
 
