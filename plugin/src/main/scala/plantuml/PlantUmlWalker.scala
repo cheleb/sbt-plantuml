@@ -34,7 +34,12 @@ object PlantUmlWalker {
       IO.createDirectory(outputFolder)
     formats.toList.flatMap { format =>
       val plant =
-        new SourceFileReader(input, outputFolder, new FileFormatOption(format))
+        new SourceFileReader(
+          true,
+          input,
+          outputFolder,
+          new FileFormatOption(format)
+        )
       plant.getGeneratedImages.asScala.toList
     }
   }
