@@ -57,7 +57,7 @@ lazy val plugin = project
   .settings(
     moduleName := "sbt-plantuml",
     libraryDependencies += "net.sourceforge.plantuml" % "plantuml" % "1.2026.2",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.20" % Test,
     (pluginCrossBuild / sbtVersion) := {
       scalaBinaryVersion.value match {
         case "2.12" => "1.12.0"
