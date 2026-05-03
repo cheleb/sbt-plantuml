@@ -7,7 +7,7 @@ val scala3 = "3.7.4"
 inThisBuild(
   List(
     organization := "dev.cheleb",
-    homepage := Some(url("https://github.com/cheleb/plantuml-sbt-plugin")),
+    homepage := Some(url("https://github.com/cheleb/sbt-plantuml")),
     licenses := List(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
     ),
