@@ -11,7 +11,6 @@ inThisBuild(
     licenses := List(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
     ),
-    useCoursier := false,
     crossScalaVersions := Seq(scala212, scala3),
     scalaVersion := scala212,
     sbtPluginPublishLegacyMavenStyle := false,
