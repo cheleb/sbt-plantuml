@@ -47,7 +47,6 @@ inThisBuild(
 
 onLoadMessage := s"Welcome to sbt-plantuml ${version.value}"
 
-publish / skip := true // don't publish the root project
 
 lazy val plugin = project
   .in(file("plugin"))
@@ -69,3 +68,10 @@ lazy val plugin = project
       }
     }
   )
+
+lazy val root = project.
+  settings(
+    name := "root",
+    publish / skip := true
+  ).
+  aggregate(plugin)
