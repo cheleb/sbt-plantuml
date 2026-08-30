@@ -2,16 +2,15 @@
 //import sbtrelease.ReleaseStateTransformations._
 
 val scala212 = "2.12.21"
-val scala3 = "3.7.4"
+val scala3 = "3.9.0"
 
 inThisBuild(
   List(
     organization := "dev.cheleb",
-    homepage := Some(url("https://github.com/cheleb/sbt-plantuml")),
+    homepage := Some(uri("https://github.com/cheleb/sbt-plantuml")),
     licenses := List(
-      "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
+      "Apache-2.0" -> uri("http://www.apache.org/licenses/LICENSE-2.0")
     ),
-    useCoursier := false,
     crossScalaVersions := Seq(scala212, scala3),
     scalaVersion := scala212,
     sbtPluginPublishLegacyMavenStyle := false,
@@ -30,7 +29,7 @@ inThisBuild(
     pgpPassphrase := sys.env.get("PGP_PASSWORD").map(_.toArray),
     scmInfo := Some(
       ScmInfo(
-        url("https://github.com/cheleb/sbt-plantuml/"),
+        uri("https://github.com/cheleb/sbt-plantuml/"),
         "scm:git:git@github.com:cheleb/sbt-plantuml.git"
       )
     ),
@@ -39,13 +38,12 @@ inThisBuild(
         "cheleb",
         "Olivier NOUGUIER",
         "olivier.nouguier@gmail.com",
-        url("https://github.com/cheleb")
+        uri("https://github.com/cheleb")
       )
     )
   )
 )
 
-name := "sbt-plantuml"
 
 onLoadMessage := s"Welcome to sbt-plantuml ${version.value}"
 
@@ -61,7 +59,7 @@ lazy val plugin = project
     (pluginCrossBuild / sbtVersion) := {
       scalaBinaryVersion.value match {
         case "2.12" => "1.12.0"
-        case _      => "2.0.0-RC8"
+        case _      => "2.0.8"
       }
     },
     scriptedSbt := {
