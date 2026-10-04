@@ -58,7 +58,7 @@ lazy val plugin = project
     (pluginCrossBuild / sbtVersion) := {
       scalaBinaryVersion.value match {
         case "2.12" => "1.12.0"
-        case _      => "2.0.8"
+        case _      => "2.0.10"
       }
     },
     scriptedSbt := {
